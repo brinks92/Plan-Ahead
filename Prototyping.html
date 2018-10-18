@@ -1,0 +1,336 @@
+﻿<!doctype html>
+<html><head>
+<meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<title>prototyping</title>
+	
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+<style>
+        img.fullscreen{width:100%;}
+        img.thumbnail{width:15%;}
+		
+		.ui-content{background-color:rgba(238,171,255,1.00); }
+		
+		.Head{background-color: lightblue;}
+	
+	.ui-bar-a {color:rgba(171,195,255,1.00);}
+	
+	form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+		
+	.ui-checkbox{position: relative; 
+	width: 20px;
+	height: 20px;}
+		
+    </style>
+	
+<script>
+	function date_time(id)
+{
+        date = new Date;
+        year = date.getFullYear();
+        month = date.getMonth();
+        months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
+        d = date.getDate();
+        day = date.getDay();
+        days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+        h = date.getHours();
+        if(h<10)
+        {
+                h = "0"+h;
+        }
+        m = date.getMinutes();
+        if(m<10)
+        {
+                m = "0"+m;
+        }
+        s = date.getSeconds();
+        if(s<10)
+        {
+                s = "0"+s;
+        }
+        result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m+':'+s;
+        document.getElementById(id).innerHTML = result;
+        setTimeout('date_time("'+id+'");','1000');
+        return true;
+}
+	
+	</script>
+	
+	</head>
+	
+
+<body>
+<div data-role="page" id = "Login">
+
+	<div data-role="header" id="Head">
+		<h1>Login</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+		
+<form action="#Main">
+ 
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="font-size: 10px"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:rgba(238,171,255,1.00)">
+    <button type="button" class="cancelbtn">Cancel</button>
+  </div>
+	<span class="psw">Forgot <a href="#">password?</a></span>
+</form>
+		
+		
+		
+		
+
+
+
+	<br>
+		<br>	
+		
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+	
+<!-- Start of first page -->
+<div data-role="page" id = "Main">
+
+	<div data-role="header" id="Head">
+		<h1>Main Page</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+		
+		<button><a href="#Jobs" class="ui-btn-corner-all">Add a Job</a></button>
+		
+		<br>
+		<br>
+		
+		 <span id="date_time"></span>
+            <script type="text/javascript">window.onload = date_time('date_time');</script>
+		
+		<br>
+		<br>
+		<br>
+		
+		
+		<button><a href="#JobOne" class="ui-btn-corner-all">Line cook: 15/hr</a></button>
+		
+		<button><a href="#JobOne" class="ui-btn-corner-all">Production specialist: 20/hr</a></button>
+		
+
+
+
+	<br>
+		<br>
+		
+			
+			
+		<button><a href="#Times" class="ui-btn-corner-all">View your Clock in Times</a></button>
+	</div><!-- /content -->
+
+	
+	
+	
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of second page -->
+<div data-role="page" id="Times">
+
+	<div data-role="header" id="Head">
+		<h1>Times</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<ul data-role="listview" data-filter="true" data-filter-placeholder="Search Hours" data-inset="true">
+    <li><a href="#">Friday 8/2</a></li>
+    <li><a href="#">Saturday 8/3</a></li>
+    <li><a href="#">Sunday 8/4</a></li>
+    <li><a href="#">Monday 8/5</a></li>
+    <li><a href="#">Tuesday 8/6</a></li>
+    <li><a href="#">Wednesday 8/7</a></li>
+</ul>
+		
+		<p><a href="#Main">Back to Main Page</a></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+	
+	<div data-role="page" id="Jobs">
+
+	<div data-role="header" id="Head">
+		<h3>Add a Job</h3>
+	</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+		
+			<label for="select-choice-mini" class="select">What is your pay schedule</label>
+<select name="select-choice-mini" id="select-choice-mini" data-mini="true" data-inline="true">
+    <option value="standard">Weekly</option>
+    <option value="rush">Bi-Weekly</option>
+    <option value="express">Monthly</option>
+    <option value="overnight">Other</option>
+</select>
+		
+			<form>
+     <label for="text-4">Job Title</label>
+     <input type="text" data-mini="true" name="text-4" id="text-4" value="">
+    
+	 <label for="text-5">Pay Rate</label>
+	 <input type="text" data-mini="true" name="text-5" id="text-5" value="">
+     
+						<label for="select-choice-mini" class="select">What is your job status</label>
+<select name="select-choice-mini" id="select-choice-mini" data-mini="true" data-inline="true">
+    <option value="standard">Full Time</option>
+    <option value="rush">Part Time</option>
+    <option value="express">Salary</option>
+    <option value="overnight">Seasonal</option>
+</select>
+				
+				
+     <label for="date-2">Start Date</label>
+     <input type="date" data-clear-btn="true" name="date-2" id="date-2" value="">
+  
+</form>
+		<button><a href="#Main" class="ui-btn-corner-all">Add</a></button>
+			
+			
+			<br>
+			
+			<p><a href="#Main">Back to Main Page</a></p>
+		
+		</div>
+		
+		<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+	
+		
+	</div>
+	
+	<div data-role="page"id="JobOne">
+
+	<div data-role="header" id="Head">
+		<h1>JobOne</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+<ul data-role="listview">
+    <li><a href="#Punch">Clock In</a></li>
+    <li><a href="#Punch">Clock Out</a></li>
+    <li><a href="#Punch">Break In</a></li>
+    <li><a href="#Punch">Break Out</a></li>
+</ul>
+		
+		<p><a href="#Main">Back to Main Page</a></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+	
+	
+	
+	<div data-role="page"id="Punch">
+
+	<div data-role="header" id="Head">
+		<h1>JobOne</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+<h3 style="font-size: 30px"> Your time has been recorded thank you!</h3>
+		
+		<p><a href="#Main">Back to Main Page</a></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+    </body>
+</html>
